@@ -1,0 +1,21 @@
+.page {
+    display: flex;
+    height: 100vh;
+}
+.column-left {
+    text-align: center;
+    width: 30%;
+}
+
+.column-right {
+    width: 70%;
+}
+
+.btn-div {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.add-todo-btn {
+    margin: 10px;
+}
