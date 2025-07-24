@@ -5,10 +5,12 @@
 .column-left {
     text-align: center;
     width: 30%;
+    padding: 25px;
 }
 
 .column-right {
     width: 70%;
+    padding: 25px;
 }
 
 .btn-div {
@@ -16,6 +18,14 @@
     justify-content: flex-end;
 }
 
-.add-todo-btn {
-    margin: 10px;
+.project-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.proj-btn {
+    width: 250px;
+    padding: 5px;
+    margin-top: 15px;
 }
