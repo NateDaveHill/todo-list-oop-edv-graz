@@ -2,7 +2,7 @@
 import Project from "./Project.js";
 import Todo from "./Todo.js";
 import { saveToLocalStorage,loadFromLocalStorage } from "../Controller/local-storage.js";
-import { renderProjects } from "../View/render.js";
+import { renderProjects, renderTodos } from "../View/render.js";
 
 // Load tempProjectId from localStorage
 let tempProjectId = 0;
@@ -43,6 +43,7 @@ addTodoBtn.addEventListener('click', (e) => {
             project.todos.push(todo);
             saveToLocalStorage(projects, "projects");
             renderProjects(projects);
+            renderTodos(project);
             console.log("Todo added:", todo);
         } else {
             console.warn("Project not found for ID:", tempProjectId);

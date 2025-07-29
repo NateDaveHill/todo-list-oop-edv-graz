@@ -14,7 +14,7 @@ export function renderProjects(projects) {
 
 }
 
-export function renderTodos(projects) {
+export function renderTodos(project) {
     const todoList = document.querySelector(".todo-list");
     projectList.innerHTML = "";
 
