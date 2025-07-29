@@ -1,3 +1,4 @@
+// render.js
 export function renderProjects(projects) {
     const projectList = document.querySelector(".project-list");
     projectList.innerHTML = "";
@@ -5,29 +6,35 @@ export function renderProjects(projects) {
     projects.forEach(project => {
         const btn = document.createElement('button');
         btn.innerHTML = project.title;
-        btn.addEventListener('click', () => {
-            console.log('The div was clicked! render.js');
-          });
         btn.classList.add("proj-btn");
+
+        btn.addEventListener('click', () => {
+            // Fix: Set the actual project ID in localStorage
+            localStorage.setItem('tempProjectId', project.id);
+            // Show the todos for this project
+            renderTodos(project);
+            console.log('Projekt ausgewählt:', project.title);
+        });
+
         projectList.appendChild(btn);
     });
-
 }
 
 export function renderTodos(project) {
     const todoList = document.querySelector(".todo-list");
-    projectList.innerHTML = "";
+    todoList.innerHTML = "";
 
-    projects.forEach(project => {
-        project.todos(todo => {
-            const btn = document.createElement('button');
-            btn.innerHTML = todo.title;
-            btn.addEventListener('click', () => {
-                console.log('The div was clicked! render.js');
-              });
-            btn.classList.add("btn-div");
-            todoList.appendChild(btn);
-        });
+    if (!project.todos || project.todos.length === 0) {
+        const empty = document.createElement('div');
+        empty.innerText = "Keine Todos vorhanden";
+        todoList.appendChild(empty);
+        return;
+    }
+
+    project.todos.forEach(todo => {
+        const btn = document.createElement('div');
+        btn.innerHTML = `<strong>${todo.title}</strong><br>${todo.description} (Prio: ${todo.priority})`;
+        btn.classList.add("todo-item");
+        todoList.appendChild(btn);
     });
-
 }
