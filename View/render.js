@@ -34,9 +34,9 @@ export function renderTodos(project) {
     project.todos.forEach(todo => {
         const btn = document.createElement('div');
         btn.innerHTML = 
-        `<h1>
+        `<h3>
         ${todo.title}
-        </h1>
+        </h3>
         <br>
         ${todo.description} 
         <br> 
@@ -44,7 +44,12 @@ export function renderTodos(project) {
                         <option value="high" ${todo.priority === "high" ? "selected" : ""}>high</option>
                         <option value="medium" ${todo.priority === "medium" ? "selected" : ""}>medium</option>
                         <option value="low" ${todo.priority === "low" ? "selected" : ""}>low</option>
-                      </select>`;
+                      </select>
+        <br>
+        <button class="fn-todo-btn">Edit</button>
+        <br>
+        <button class="fn-todo-btn">Done</button>
+        `;
         btn.classList.add("todo-item");
         todoList.appendChild(btn);
     });
